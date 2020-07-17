@@ -77,6 +77,8 @@ target 'app1' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'app1Tests' do
     inherit! :complete
     # Pods for testing
@@ -94,11 +96,3 @@ target 'app1' do
   end
 end
 
-target 'app1-tvOS' do
-  # Pods for app1-tvOS
-
-  target 'app1-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-end
