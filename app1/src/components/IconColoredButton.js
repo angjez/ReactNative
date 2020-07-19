@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const IconColoredButton = ( { name, iconName, color, routeName } ) => {
+const IconColoredButton = ( { name, iconName, color, routeName, navigation } ) => {
     console.log(color)
     return (
         <View style={styles.buttonStyle}>

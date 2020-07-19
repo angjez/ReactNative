@@ -4,12 +4,12 @@ import { FlatList } from 'react-native-gesture-handler';
 
 import IconColoredButton from '../components/IconColoredButton.js'
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
     const buttons = [
         {
             name: 'Tic tac toe',
             iconName: 'game-controller-outline',
-            routeName: ''
+            routeName: 'TicTacToe'
         },
         {
             name: 'TODO list',
@@ -39,7 +39,8 @@ const HomeScreen = () => {
                         name={item.name} 
                         iconName={item.iconName} 
                         color={`rgba(0,145,89, ${1-index*buttons.length*0.05})`} 
-                        routeName={''} 
+                        routeName={item.routeName} 
+                        navigation = {navigation}
                         />
                     );
                 }}

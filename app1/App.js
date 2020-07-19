@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { View } from 'react-native';
 
-import HomeScreen from './src/screens/HomeScreen.js';
+import Containter from './src/navigation/Stack.js';
 
 const App = () => {
   return (
-    <HomeScreen/>
+    <Containter/>
   );
 }
 
