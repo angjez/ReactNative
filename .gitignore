@@ -58,3 +58,4 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 app1/yarn.lock
+app1/src/screens/Weather/APIKey.js

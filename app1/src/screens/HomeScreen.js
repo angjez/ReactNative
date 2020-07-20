@@ -19,7 +19,7 @@ const HomeScreen = ({ navigation }) => {
         {
             name: 'Weather',
             iconName: 'sunny-outline',
-            routeName: ''
+            routeName: 'Weather'
         },
         {
             name: 'Timer',
@@ -38,7 +38,7 @@ const HomeScreen = ({ navigation }) => {
                         <IconColoredButton 
                         name={item.name} 
                         iconName={item.iconName} 
-                        color={`rgba(0,145,89, ${1-index*buttons.length*0.05})`} 
+                        color={`rgba(114,0,165, ${1-index*buttons.length*0.05})`} 
                         routeName={item.routeName} 
                         navigation = {navigation}
                         />

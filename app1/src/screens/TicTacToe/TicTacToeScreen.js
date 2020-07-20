@@ -120,7 +120,7 @@ const TicTacToeScreen = () => {
                                     underlayColor='transparent'
                                     height='100%'
                                     size={50}
-                                    color='#fe969a'
+                                    color='#d00059'
                                     justifyContent='center'
                                     onPress={() => {(fieldState(item.coordinates)==null && won==false) ? makeMove(item.coordinates) : null}}>
                                 </Icon.Button>
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
         height: Math.round(Dimensions.get('window').width) - 30,
         width: Math.round(Dimensions.get('window').width) - 30,
         borderWidth: 2,
-        borderColor: '#fe969a',
+        borderColor: '#d00059',
     },
     rowView: {
         flex: 1,
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
         height: (Math.round(Dimensions.get('window').width) - 30)/3,
         width: (Math.round(Dimensions.get('window').width) - 30)/3,
         borderWidth: 2,
-        borderColor: '#fe969a',
+        borderColor: '#d00059',
     },
     textStyle: {
         fontSize: 20,
