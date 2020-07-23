@@ -86,13 +86,35 @@ const WeatherScreen = () => {
                     }}
                 />
                 <View style={styles.separatorStyle}/>
-                <Text>Forecast</Text>
+            </View>
+            <View style={styles.forecastViewStyle}>
+                <FlatList
+                    scrollEnabled='true'
+                    keyExtractor = {forecast => forecast.dt_txt}
+                    data = {forecast}
+                    renderItem = {({item, index}) => {
+                        if (index%8==0) {
+                        return (
+                            <>
+                            <Text style={styles.forecastFlatlistDateTextStyle}>{`${item.dt_txt.substring(8, 10)}.${item.dt_txt.substring(5, 7)}`}</Text>
+                            <View style={styles.forecastFlatlistItemViewStyle}>
+                            <   Text style={styles.forecastFlatlistTextStyle}>{item.weather[0].main}</Text>
+                                <Icon name={chooseIcon(item.weather[0].main)} size={20} color='white'/>
+                                <Text style={styles.forecastFlatlistTextStyle}>{`Min :${Math.round(item.main.temp_min - 273.15)}°C`}</Text>
+                                <Text style={styles.forecastFlatlistTextStyle}>{`Max :${Math.round(item.main.temp_max - 273.15)}°C`}</Text>
+                            </View>
+                            </>
+                        );
+                        }
+                    }}
+                />
             </View>
         </LinearGradient>
     );
 };
 
 const styles = StyleSheet.create({
+    // daily view
     viewStyle: {
         marginTop: 100,
         marginLeft: 20,
@@ -122,12 +144,35 @@ const styles = StyleSheet.create({
     flatlistItemViewStyle: {
         alignItems: 'center',
         padding: 15,
+        marginBottom: 15,
     },
     flatListTextStyle: {
         color: 'white',
         fontSize: 20,
         fontWeight: '200',
-    }
+    },
+    // forecast view
+    forecastViewStyle: {
+        margin: 30,
+    },
+    forecastFlatlistItemViewStyle: {
+        flexDirection: 'row',
+        margin: 5,
+    },
+    forecastFlatlistTextStyle: {
+        color: 'white',
+        fontSize: 20,
+        fontWeight: '200',
+        marginRight: 5,
+        marginLeft: 5,
+    },
+    forecastFlatlistDateTextStyle: {
+        color: 'white',
+        fontSize: 22,
+        fontWeight: '500',
+        width: 100,
+        margin: 3,
+    },
 });
 
 export default WeatherScreen;
