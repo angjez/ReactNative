@@ -26,6 +26,11 @@ const HomeScreen = ({ navigation }) => {
             iconName: 'timer-outline',
             routeName: ''
         },
+        {
+            name: 'SearchBar',
+            iconName: 'search-outline',
+            routeName: 'SearchBar'
+        },
     ]
 
     return (
@@ -38,7 +43,7 @@ const HomeScreen = ({ navigation }) => {
                         <IconColoredButton 
                         name={item.name} 
                         iconName={item.iconName} 
-                        color={`rgba(114,0,165, ${1-index*buttons.length*0.05})`} 
+                        color={`rgba(114,0,165, ${1-index*buttons.length*0.03})`} 
                         routeName={item.routeName} 
                         navigation = {navigation}
                         />
