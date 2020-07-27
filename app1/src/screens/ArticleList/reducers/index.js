@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ADD_ARTICLE } from "../constants/action-types.js";
+import { ADD_ARTICLE, DELETE_ARTICLE } from "../constants/action-types.js";
 
 const initialState = {
   articles: []
@@ -10,6 +10,11 @@ function rootReducer(state = initialState, action) {
       return Object.assign({}, state, {
         articles: state.articles.concat(action.payload)
       });
+    } else if (action.type == DELETE_ARTICLE) {
+        return Object.assign({}, state, {
+            articles: state.articles.filter(item => !action.payload.includes(item))
+        });
+    
     }
     return state;
   }

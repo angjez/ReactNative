@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { ADD_ARTICLE } from "../constants/action-types";
+import { ADD_ARTICLE, DELETE_ARTICLE } from "../constants/action-types";
 
-export function addArticle(payload) {
+const addArticle = (payload) => {
     return { type: ADD_ARTICLE, payload };
 }
+
+const deleteArticle = (payload) => {
+    return { type: DELETE_ARTICLE, payload };
+}
+
+export {addArticle, deleteArticle}

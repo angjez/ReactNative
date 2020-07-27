@@ -11,7 +11,6 @@ const SearchBarScreen = () => {
         fetch('https://api.exchangeratesapi.io/latest')
         .then(res => res.json())
         .then(json => {
-            console.log(json.rates)
             setRates(Object.entries(json.rates))
             });
     }, [])
@@ -34,7 +33,6 @@ const SearchBarScreen = () => {
                 keyExtractor = {rate => rate[0]}
                 data = {rates}
                 renderItem = {({item}) => {
-                    console.log(item)
                     return (
                         <View>
                             <QueryResult item={item}/>

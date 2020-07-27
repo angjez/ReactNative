@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 import store from "./store/index.js";
 import { Provider } from 'react-redux';
-import { addArticle } from "./actions/index.js";
+import { addArticle, deleteArticle } from "./actions/index.js";
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -19,12 +19,13 @@ const ArticleListScreen = () => {
                     keyExtractor = {article => article}
                     data = {store.getState().articles}
                     renderItem = {({item}) => {
-                        console.log(item)
                         return (
                             <View style={styles.itemStyle}> 
                                 <Text style={styles.itemTextStyle}>{item}</Text>
                                 <Icon.Button
-                                onPress={() => {console.log('click')}}
+                                onPress={() => {
+                                    store.dispatch(deleteArticle(item))
+                                }}
                                 name='close-outline'
                                 backgroundColor='transparent'
                                 underlayColor='transparent'
@@ -40,9 +41,6 @@ const ArticleListScreen = () => {
                     animationType="slide"
                     transparent={true}
                     visible={modalVisible}
-                    onRequestClose={() => {
-                        Alert.alert("Modal has been closed.");
-                    }}
                     >
                         <View style={styles.modalViewStyle}>
                             <TextInput
@@ -54,6 +52,7 @@ const ArticleListScreen = () => {
                                 onPress={() => {
                                     if(inputValue) {store.dispatch(addArticle(inputValue))}
                                     setModalVisible(false)
+                                    onChangeText('')
                                 }}
                                 name='checkmark-outline'
                                 backgroundColor='transparent'
