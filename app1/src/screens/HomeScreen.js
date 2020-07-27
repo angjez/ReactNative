@@ -12,9 +12,9 @@ const HomeScreen = ({ navigation }) => {
             routeName: 'TicTacToe'
         },
         {
-            name: 'TODO list',
+            name: 'Article list',
             iconName: 'list',
-            routeName: ''
+            routeName: 'ArticleList'
         },
         {
             name: 'Weather',

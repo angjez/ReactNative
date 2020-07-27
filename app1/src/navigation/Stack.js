@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen.js'
 import WeatherScreen from '../screens/Weather/WeatherScreen.js'
 import TicTacToeScreen from '../screens/TicTacToe/TicTacToeScreen.js'
 import SearchBarScreen from '../screens/SearchBar/SearchBarScreen.js'
+import ArticleListScreen from '../screens/ArticleList/AtricleListScreen.js'
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const Containter = () => {
           <Stack.Screen name='TicTacToe' component={TicTacToeScreen}/>
           <Stack.Screen name='Weather' component={WeatherScreen}/>
           <Stack.Screen name='SearchBar' component={SearchBarScreen}/>
+          <Stack.Screen name='ArticleList' component={ArticleListScreen}/>
         </Stack.Navigator>
       </NavigationContainer>
     );
