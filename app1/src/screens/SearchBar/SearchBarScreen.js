@@ -5,7 +5,7 @@ import { FlatList } from 'react-native-gesture-handler';
 
 const SearchBarScreen = () => {
     const [rates, setRates] = useState([])
-    const [searchValue, onChangeText] = React.useState('Search exchange rates');
+    const [searchValue, onChangeText] = useState('Search exchange rates')
 
     useEffect (() => {
         fetch('https://api.exchangeratesapi.io/latest')
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     textStyle: {
         margin: 5,
         fontSize: 16,
-    }
+    },
 });
 
 export default SearchBarScreen;
