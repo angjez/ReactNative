@@ -30,6 +30,14 @@ const TemperatureWithIcon = ({currentWeather, icon}) => {
     );
 }
 
+const findMinMax = (arr, min) => {
+    const tempArr = []
+    for (i=0; i<arr.length; i++) {
+        min ? tempArr.push(arr[i].main.temp_min) : tempArr.push(arr[i].main.temp_max)
+    }
+    return min ? Math.min.apply(null, tempArr) : Math.max.apply(null, tempArr)
+}
+
 const WeatherScreen = () => {
     const [todaysWeather, setTodaysWeather] = useState([])
     const [forecast, setForecast] = useState([])
@@ -100,8 +108,8 @@ const WeatherScreen = () => {
                             <View style={styles.forecastFlatlistItemViewStyle}>
                             <   Text style={styles.forecastFlatlistTextStyle}>{item.weather[0].main}</Text>
                                 <Icon name={chooseIcon(item.weather[0].main)} size={20} color='white'/>
-                                <Text style={styles.forecastFlatlistTextStyle}>{`Min :${Math.round(item.main.temp_min - 273.15)}°C`}</Text>
-                                <Text style={styles.forecastFlatlistTextStyle}>{`Max :${Math.round(item.main.temp_max - 273.15)}°C`}</Text>
+                                <Text style={styles.forecastFlatlistTextStyle}>{`Min :${Math.round(findMinMax(forecast.slice(index, index+7), true) - 273.15)}°C`}</Text>
+                                <Text style={styles.forecastFlatlistTextStyle}>{`Max :${Math.round(findMinMax(forecast.slice(index, index+7), false)- 273.15)}°C`}</Text>
                             </View>
                             </>
                         );
