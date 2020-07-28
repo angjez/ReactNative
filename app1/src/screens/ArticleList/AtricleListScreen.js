@@ -11,13 +11,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const ArticleListScreen = () => {
     const [modalVisible, setModalVisible] = useState(false)
     const [inputValue, onChangeText] = useState()
+    const [articles, setArticles] = useState(store.getState().articles)
 
     return (
         <Provider store={store}>
             <View style={styles.viewStyle}>
                 <FlatList
                     keyExtractor = {article => article}
-                    data = {store.getState().articles}
+                    data = {articles}
                     renderItem = {({item}) => {
                         return (
                             <View style={styles.itemStyle}> 
@@ -25,6 +26,7 @@ const ArticleListScreen = () => {
                                 <Icon.Button
                                 onPress={() => {
                                     store.dispatch(deleteArticle(item))
+                                    setArticles(store.getState().articles)
                                 }}
                                 name='close-outline'
                                 backgroundColor='transparent'
@@ -50,7 +52,10 @@ const ArticleListScreen = () => {
                             />
                             <Icon.Button
                                 onPress={() => {
-                                    if(inputValue) {store.dispatch(addArticle(inputValue))}
+                                    if(inputValue) {
+                                        store.dispatch(addArticle(inputValue))
+                                        setArticles(store.getState().articles)
+                                    }
                                     setModalVisible(false)
                                     onChangeText('')
                                 }}
