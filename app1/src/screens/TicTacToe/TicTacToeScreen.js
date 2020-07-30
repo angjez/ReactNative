@@ -135,7 +135,7 @@ const TicTacToeScreen = () => {
                     underlayColor="transparent"
                     height="100%"
                     size={50}
-                    color="#d00059"
+                    color="#aff706"
                     justifyContent="center"
                     onPress={() => {
                       fieldState(item.coordinates) == null && won === false
@@ -158,8 +158,8 @@ const TicTacToeScreen = () => {
         <View style={styles.centeredView}>
           <Icon.Button
             name="refresh-outline"
-            backgroundColor="#53f0c7"
-            underlayColor="#d8fff4"
+            backgroundColor="#7200a5"
+            underlayColor="#a700f2"
             size={40}
             onPress={() => {
               setCircleCoordinates([]);
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     height: Math.round(Dimensions.get('window').width) - 30,
     width: Math.round(Dimensions.get('window').width) - 30,
     borderWidth: 2,
-    borderColor: '#d00059',
+    borderColor: '#aff706',
   },
   rowView: {
     flex: 1,
@@ -199,11 +199,12 @@ const styles = StyleSheet.create({
     height: (Math.round(Dimensions.get('window').width) - 30) / 3,
     width: (Math.round(Dimensions.get('window').width) - 30) / 3,
     borderWidth: 2,
-    borderColor: '#d00059',
+    borderColor: '#aff706',
   },
   textStyle: {
-    fontSize: 20,
-    marginTop: 20,
+    fontSize: 40,
+    marginTop: 50,
+    fontWeight: '300',
   },
   centeredView: {
     flex: 1,

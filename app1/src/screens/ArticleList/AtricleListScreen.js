@@ -2,11 +2,30 @@ import * as React from 'react';
 import {View, Text, StyleSheet, Modal, TextInput} from 'react-native';
 import {useState} from 'react';
 import {FlatList} from 'react-native-gesture-handler';
+import {SvgUri} from 'react-native-svg';
 import store from './store/index.js';
 import {Provider} from 'react-redux';
 import {addArticle, deleteArticle} from './actions/index.js';
 
 import Icon from 'react-native-vector-icons/Ionicons';
+
+const NoArticles = ({articles}) => {
+  if (articles.length === 0) {
+    return (
+      <>
+        <Text style={styles.headerStyle}>
+          No articles yet, go ahead and add some!
+        </Text>
+        <SvgUri
+          width="100%"
+          height="50%"
+          uri="https://svgshare.com/i/NMP.svg"
+        />
+      </>
+    );
+  }
+  return null;
+};
 
 const ArticleListScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -16,6 +35,7 @@ const ArticleListScreen = () => {
   return (
     <Provider store={store}>
       <View style={styles.viewStyle}>
+        <NoArticles articles={articles} />
         <FlatList
           keyExtractor={(article) => article}
           data={articles}
@@ -31,7 +51,7 @@ const ArticleListScreen = () => {
                   name="close-outline"
                   backgroundColor="transparent"
                   underlayColor="transparent"
-                  color="#b7003d"
+                  color="#7200a5"
                 />
               </View>
             );
@@ -60,7 +80,7 @@ const ArticleListScreen = () => {
                 name="checkmark-outline"
                 backgroundColor="transparent"
                 underlayColor="transparent"
-                color="#b7003d"
+                color="#7200a5"
               />
               <Icon.Button
                 onPress={() => {
@@ -70,7 +90,7 @@ const ArticleListScreen = () => {
                 name="close-outline"
                 backgroundColor="transparent"
                 underlayColor="transparent"
-                color="#b7003d"
+                color="#7200a5"
               />
             </View>
           </Modal>
@@ -79,7 +99,7 @@ const ArticleListScreen = () => {
               setModalVisible(true);
             }}
             name="add-outline"
-            backgroundColor="#00bd8c">
+            backgroundColor="#7200a5">
             Add article
           </Icon.Button>
         </View>
@@ -100,7 +120,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 10,
-    borderBottomColor: '#00bd8c',
+    borderBottomColor: '#aff706',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   itemTextStyle: {
@@ -125,6 +145,11 @@ const styles = StyleSheet.create({
     marginRight: 20,
     borderRadius: 20,
     backgroundColor: 'white',
+  },
+  headerStyle: {
+    fontSize: 40,
+    marginTop: 50,
+    fontWeight: '300',
   },
 });
 
